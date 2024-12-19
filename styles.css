@@ -1,0 +1,126 @@
+body {
+    background-color: #1e1e1e; /* Ciemne tło */
+    color: #00cc00; /* Ciemniejszy zielony tekst */
+    font-family: "Courier New", Courier, monospace; /* Czcionka monospace */
+    font-size: 18px;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+h1, h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+input[type="password"] {
+    background-color: #333;
+    border: 2px solid #00cc00;
+    color: #00cc00;
+    padding: 10px;
+    font-size: 18px;
+    width: 300px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="password"]:focus {
+    border-color: #00aa00; /* Jaśniejszy zielony przy focu */
+}
+
+button {
+    background-color: #00cc00;
+    color: #1e1e1e;
+    border: none;
+    padding: 15px;
+    font-size: 20px;
+    width: 300px;
+    display: block;
+    margin: 20px auto;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #009900; /* Ciemniejszy zielony przy najechaniu */
+}
+
+#output, #time {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+#histogram {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.bar {
+    width: 10px;
+    margin: 0 2px;
+    background-color: #00cc00;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block; /* Wycentruj ranking */
+    text-align: left; /* Wyrównaj tekst na lewo */
+}
+
+li {
+    font-size: 18px;
+    padding: 5px;
+}
+
+#history {
+    margin-top: 20px;
+    background-color: #333;
+    padding: 15px;
+    border-radius: 10px;
+    display: inline-block; /* Wycentruj historię */
+    text-align: left;
+}
+
+#history div {
+    background-color: #444;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+strong {
+    color: #00cc00;
+}
+
+.low-score {
+    color: red;
+}
+
+.medium-score {
+    color: yellow;
+}
+
+.high-score {
+    color: green;
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 16px;
+    }
+
+    input[type="password"], button {
+        width: 80%;
+    }
+}
