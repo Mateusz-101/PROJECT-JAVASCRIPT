@@ -3,22 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikacja do nauki angielskiego</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <title>Zgadywanie Hasła - Historia i Błędy</title>
 </head>
 <body>
-    <h1>Aplikacja do zgadywania hasła</h1>
-    <input id="password" type="password" placeholder="Wpisz swoje hasło" />
-    <button onclick="startGuessing()">Zgadnij hasło</button>
-    <p id="output"></p>
-    <div id="histogram"></div>
-    <p id="time"></p>
-
-    <h2>Ranking</h2>
-    <ul id="leaderboard"></ul>
-
-    <h2>Historia zgadywania</h2>
-    <div id="history"></div>
+    <div id="app">
+        <h1>Aplikacja do nauki angielskiego</h1>
+        <div id="category-section">
+            <h2>Dodaj kategorię</h2>
+            <input type="text" id="category-input" placeholder="Nazwa kategorii" />
+            <button id="add-category">Dodaj</button>
+            <h3>Lista kategorii:</h3>
+            <ul id="category-list"></ul>
+        </div>
+        <div id="flashcard-section" style="display: none;">
+            <h2 id="flashcard-title">Fiszki z kategorii</h2>
+            <div>
+                <input type="text" id="question-input" placeholder="Pytanie" />
+                <input type="text" id="answer-input" placeholder="Odpowiedź" />
+                <button id="add-flashcard">Dodaj fiszkę</button>
+            </div>
+            <ul id="flashcard-list"></ul>
+            <button id="start-test">Rozpocznij test</button>
+            <button id="back-to-categories">Wróć do kategorii</button>
+        </div>
+        <div id="test-section" style="display: none;">
+            <h2 id="test-title">Test z kategorii</h2>
+            <div id="test-question"></div>
+            <input type="text" id="test-answer" placeholder="Twoja odpowiedź" />
+            <button id="submit-answer">Zatwierdź odpowiedź</button>
+            <div id="test-result"></div>
+            <button id="end-test">Zakończ test</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
+
