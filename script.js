@@ -20,9 +20,7 @@ function renderFlashcards(category) {
         li.innerHTML = `<strong>Pytanie:</strong> ${flashcard.question} <br> <strong>Odpowiedź:</strong> ${flashcard.answer}`;
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Usuń';
-        deleteButton.addEventListener('click', () => {
-            deleteFlashcard(category, index);
-        });
+        deleteButton.addEventListener('click', () => deleteFlashcard(category, index));
         li.appendChild(deleteButton);
         flashcardList.appendChild(li);
     });
@@ -59,9 +57,8 @@ function deleteFlashcard(category, index) {
 }
 
 function openCategory(category) {
-    document.getElementById('category-section').style.display = 'none';
-    document.getElementById('flashcard-section').style.display = 'block';
-    document.getElementById('flashcard-title').textContent = `Fiszki z kategorii: ${category}`;
+    switchSection('flashcard-section');
+    document.getElementById('flashcard-title').textContent = category;
     renderFlashcards(category);
     document.getElementById('add-flashcard').onclick = () => {
         const question = document.getElementById('question-input').value;
@@ -75,74 +72,72 @@ function openCategory(category) {
 
 function startTest(category) {
     currentTest.category = category;
-    currentTest.flashcards = shuffleArray([...categories[category]]);
+    currentTest.flashcards = categories[category];
     currentTest.index = 0;
     currentTest.score = 0;
-    document.getElementById('flashcard-section').style.display = 'none';
-    document.getElementById('test-section').style.display = 'block';
-    renderTestQuestion();
+    switchSection('test-section');
+    document.getElementById('test-title').textContent = category;
+    showQuestion();
 }
 
-function renderTestQuestion() {
-    if (currentTest.index < currentTest.flashcards.length) {
-        const flashcard = currentTest.flashcards[currentTest.index];
-        document.getElementById('test-question').textContent = `Pytanie: ${flashcard.question}`;
-        document.getElementById('test-answer').value = '';
-        document.getElementById('test-result').textContent = '';
-    } else {
-        endTest();
-    }
+function showQuestion() {
+    const flashcard = currentTest.flashcards[currentTest.index];
+    document.getElementById('test-question').textContent = flashcard.question;
+    document.getElementById('test-answer').value = '';
+    document.getElementById('submit-answer').onclick = () => checkAnswer(flashcard.answer);
 }
 
-function submitAnswer() {
-    const userAnswer = document.getElementById('test-answer').value.trim();
-    const correctAnswer = currentTest.flashcards[currentTest.index].answer;
+function checkAnswer(correctAnswer) {
+    const userAnswer = document.getElementById('test-answer').value;
     if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
         currentTest.score++;
         document.getElementById('test-result').textContent = 'Poprawna odpowiedź!';
+        document.getElementById('test-result').className = 'correct';
     } else {
-        document.getElementById('test-result').textContent = `Błędna odpowiedź! Poprawna: ${correctAnswer}`;
+        document.getElementById('test-result').textContent = 'Błędna odpowiedź!';
+        document.getElementById('test-result').className = 'wrong';
     }
     currentTest.index++;
-    setTimeout(renderTestQuestion, 1000);
+    if (currentTest.index < currentTest.flashcards.length) {
+        setTimeout(() => showQuestion(), 1000);
+    } else {
+        setTimeout(endTest, 1000);
+    }
 }
 
 function endTest() {
-    document.getElementById('test-question').textContent = `Test zakończony! Twój wynik: ${currentTest.score}/${currentTest.flashcards.length}`;
-    document.getElementById('test-answer').style.display = 'none';
-    document.getElementById('submit-answer').style.display = 'none';
+    const result = `Twój wynik: ${currentTest.score} / ${currentTest.flashcards.length}`;
+    document.getElementById('test-result').textContent = result;
+    document.getElementById('test-result').classList.remove('correct', 'wrong');
+    
+    // Pokaż przycisk powrotu do strony głównej
+    document.getElementById('back-to-home').style.display = 'block';
 }
 
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
-
-document.getElementById('add-category').addEventListener('click', () => {
-    const categoryName = document.getElementById('category-input').value.trim();
-    if (categoryName) {
-        addCategory(categoryName);
+document.getElementById('add-category').onclick = () => {
+    const categoryInput = document.getElementById('category-input').value;
+    if (categoryInput) {
+        addCategory(categoryInput);
         document.getElementById('category-input').value = '';
     } else {
-        alert('Wprowadź nazwę kategorii.');
+        alert('Podaj nazwę kategorii.');
     }
-});
+};
 
-document.getElementById('back-to-categories').addEventListener('click', () => {
-    document.getElementById('flashcard-section').style.display = 'none';
-    document.getElementById('category-section').style.display = 'block';
-    renderCategories();
-});
+document.getElementById('back-to-categories').onclick = () => switchSection('category-section');
+document.getElementById('back-to-categories-from-test').onclick = () => switchSection('category-section');
+document.getElementById('back-to-home').onclick = () => {
+    switchSection('category-section');
+    document.getElementById('back-to-home').style.display = 'none';  // Ukryj przycisk powrotu po przejściu
+};
 
-document.getElementById('submit-answer').addEventListener('click', submitAnswer);
-document.getElementById('end-test').addEventListener('click', () => {
-    document.getElementById('test-section').style.display = 'none';
-    document.getElementById('category-section').style.display = 'block';
-    renderCategories();
-});
+// Funkcja przełączająca widoczność sekcji
+function switchSection(sectionId) {
+    const sections = ['category-section', 'flashcard-section', 'test-section'];
+    sections.forEach(id => {
+        document.getElementById(id).style.display = (id === sectionId) ? 'block' : 'none';
+    });
+}
 
-// Inicjalizacja
-renderCategories();
+switchSection('category-section');
+

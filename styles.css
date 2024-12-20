@@ -1,37 +1,143 @@
+/* Globalny styl */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
+
+/* Główne kontenery */
 #app {
-    max-width: 600px;
-    margin: auto;
+    width: 90%;
+    max-width: 700px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
 }
-h1, h2 {
+
+/* Nagłówki */
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
     color: #333;
 }
-input {
-    margin: 5px 0;
-    padding: 5px;
-    width: calc(100% - 12px);
+
+h2, h3 {
+    margin-top: 20px;
+    color: #333;
 }
+
+/* Pola tekstowe */
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 1em;
+}
+
+/* Przyciski */
 button {
-    margin: 5px 0;
-    padding: 5px 10px;
-    background-color: #007BFF;
+    background-color: #007bff;
     color: white;
     border: none;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    margin: 10px 0;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
+
 button:hover {
     background-color: #0056b3;
 }
+
+button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+/* Sekcje */
+#flashcard-section, #test-section {
+    display: none;
+}
+
+#category-section, #flashcard-section, #test-section {
+    padding: 20px;
+}
+
+/* Lista kategorii i fiszek */
 ul {
     list-style: none;
     padding: 0;
+    margin-top: 20px;
 }
+
 li {
-    background: #f9f9f9;
-    margin: 5px 0;
-    padding: 10px;
-    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+li button {
+    background-color: #dc3545;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+li button:hover {
+    background-color: #c82333;
+}
+
+/* Wynik testu */
+#test-result {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#test-result.correct {
+    color: #28a745;
+}
+
+#test-result.wrong {
+    color: #dc3545;
+}
+
+/* Nowy styl dla przycisku 'Powrót do strony głównej' */
+#back-to-home {
+    display: block;          /* Sprawia, że przycisk jest blokowy */
+    margin: 20px auto;       /* Wyśrodkowanie przycisku */
+    width: 200px;            /* Opcjonalnie: ustawiamy szerokość */
+}
+
+/* Animacja przejścia */
+.fade {
+    transition: opacity 0.3s ease;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+.fade-in {
+    opacity: 1;
+}
+

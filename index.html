@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,34 +9,41 @@
 <body>
     <div id="app">
         <h1>Aplikacja do nauki angielskiego</h1>
+        
+        <!-- Sekcja Kategorii -->
         <div id="category-section">
             <h2>Dodaj kategorię</h2>
             <input type="text" id="category-input" placeholder="Nazwa kategorii" />
-            <button id="add-category">Dodaj</button>
+            <button id="add-category">Dodaj kategorię</button>
             <h3>Lista kategorii:</h3>
             <ul id="category-list"></ul>
         </div>
-        <div id="flashcard-section" style="display: none;">
-            <h2 id="flashcard-title">Fiszki z kategorii</h2>
-            <div>
-                <input type="text" id="question-input" placeholder="Pytanie" />
-                <input type="text" id="answer-input" placeholder="Odpowiedź" />
-                <button id="add-flashcard">Dodaj fiszkę</button>
-            </div>
+
+        <!-- Sekcja Fiszek -->
+        <div id="flashcard-section" class="fade">
+            <h2>Fiszki z kategorii: <span id="flashcard-title"></span></h2>
+            <input type="text" id="question-input" placeholder="Pytanie" />
+            <input type="text" id="answer-input" placeholder="Odpowiedź" />
+            <button id="add-flashcard">Dodaj fiszkę</button>
             <ul id="flashcard-list"></ul>
             <button id="start-test">Rozpocznij test</button>
             <button id="back-to-categories">Wróć do kategorii</button>
         </div>
+
+        <!-- Sekcja Testu -->
         <div id="test-section" style="display: none;">
-            <h2 id="test-title">Test z kategorii</h2>
+            <h2>Test z kategorii: <span id="test-title"></span></h2>
             <div id="test-question"></div>
             <input type="text" id="test-answer" placeholder="Twoja odpowiedź" />
             <button id="submit-answer">Zatwierdź odpowiedź</button>
             <div id="test-result"></div>
-            <button id="end-test">Zakończ test</button>
+            <button id="end-test" style="display:none;">Zakończ test</button>
+            <button id="back-to-categories-from-test" style="display: none;">Wróć do kategorii</button>
+            <button id="back-to-home" style="display: none;">Powrót do strony głównej</button>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+
 
