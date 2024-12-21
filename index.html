@@ -7,10 +7,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="app">
+
+    <div id="intro-section">
+        <h1>Witaj w aplikacji do nauki angielskiego!</h1>
+        <p>Rozpocznij swoją podróż z nauką angielskiego już teraz!</p>
+        <button id="start-learning">Rozpocznij naukę</button>
+    </div>
+
+    <div id="app" style="display:none;">
         <h1>Aplikacja do nauki angielskiego</h1>
         
-        <!-- Sekcja Kategorii -->
         <div id="category-section">
             <h2>Dodaj kategorię</h2>
             <input type="text" id="category-input" placeholder="Nazwa kategorii" />
@@ -19,8 +25,7 @@
             <ul id="category-list"></ul>
         </div>
 
-        <!-- Sekcja Fiszek -->
-        <div id="flashcard-section" class="fade">
+        <div id="flashcard-section">
             <h2>Fiszki z kategorii: <span id="flashcard-title"></span></h2>
             <input type="text" id="question-input" placeholder="Pytanie" />
             <input type="text" id="answer-input" placeholder="Odpowiedź" />
@@ -30,8 +35,7 @@
             <button id="back-to-categories">Wróć do kategorii</button>
         </div>
 
-        <!-- Sekcja Testu -->
-        <div id="test-section" style="display: none;">
+        <div id="test-section">
             <h2>Test z kategorii: <span id="test-title"></span></h2>
             <div id="test-question"></div>
             <input type="text" id="test-answer" placeholder="Twoja odpowiedź" />
@@ -42,8 +46,7 @@
             <button id="back-to-home" style="display: none;">Powrót do strony głównej</button>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
-
-

@@ -1,8 +1,8 @@
-/* Globalny styl */
+
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+    background-color: #b9f6ca;  
+    color: #2b7a4c;  
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,44 +11,71 @@ body {
     min-height: 100vh;
 }
 
-/* Główne kontenery */
+#intro-section {
+    text-align: center;
+}
+
+#intro-section h1 {
+    font-size: 2.5em;
+    color: #1b5e20;  
+    margin-bottom: 30px;
+}
+
+#start-learning {
+    background-color: #388e3c;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#start-learning:hover {
+    background-color: #1b5e20;
+    transform: translateY(-2px);
+}
+
 #app {
     width: 90%;
     max-width: 700px;
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);  
     padding: 20px;
     text-align: center;
 }
 
-/* Nagłówki */
 h1 {
     font-size: 2.5em;
     margin-bottom: 20px;
-    color: #333;
+    color: #1b5e20;
 }
 
 h2, h3 {
     margin-top: 20px;
-    color: #333;
+    color: #1b5e20;
 }
 
-/* Pola tekstowe */
 input[type="text"] {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #81c784; 
     border-radius: 5px;
     box-sizing: border-box;
     outline: none;
     font-size: 1em;
+    transition: border-color 0.3s;
 }
 
-/* Przyciski */
+input[type="text"]:focus {
+    border-color: #66bb6a;
+}
+
 button {
-    background-color: #007bff;
+    background-color: #388e3c;
     color: white;
     border: none;
     padding: 12px 25px;
@@ -56,19 +83,19 @@ button {
     margin: 10px 0;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #1b5e20;
+    transform: translateY(-2px);
 }
 
 button:disabled {
-    background-color: #ddd;
+    background-color: #c8e6c9;
     cursor: not-allowed;
 }
 
-/* Sekcje */
 #flashcard-section, #test-section {
     display: none;
 }
@@ -77,7 +104,6 @@ button:disabled {
     padding: 20px;
 }
 
-/* Lista kategorii i fiszek */
 ul {
     list-style: none;
     padding: 0;
@@ -85,8 +111,8 @@ ul {
 }
 
 li {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
+    background-color: #c8e6c9; 
+    border: 1px solid #81c784; 
     border-radius: 5px;
     margin: 10px 0;
     padding: 15px;
@@ -95,18 +121,51 @@ li {
     align-items: center;
 }
 
-li button {
-    background-color: #dc3545;
+li span {
+    flex-grow: 1;
+}
+
+#flashcard-list li {
+    background-color: #c8e6c9; 
+    border: 1px solid #81c784; 
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-start;  
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#flashcard-list li button {
+    background-color: #388e3c;
     padding: 8px 15px;
     border-radius: 5px;
     font-size: 0.9em;
+    margin-left: auto; 
+}
+
+li button {
+    background-color: #388e3c;  
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    margin-left: 5px;
+}
+
+li {
+    display: flex;
+    justify-content: flex-end;
+}
+
+li button:first-child {
+    margin-left: 0;
 }
 
 li button:hover {
-    background-color: #c82333;
+    background-color: #388e3c;  
 }
 
-/* Wynik testu */
 #test-result {
     margin-top: 20px;
     font-weight: bold;
@@ -114,21 +173,28 @@ li button:hover {
 }
 
 #test-result.correct {
-    color: #28a745;
+    color: #388e3c;  
 }
 
 #test-result.wrong {
-    color: #dc3545;
+    color: #be250a;  
 }
 
-/* Nowy styl dla przycisku 'Powrót do strony głównej' */
 #back-to-home {
-    display: block;          /* Sprawia, że przycisk jest blokowy */
-    margin: 20px auto;       /* Wyśrodkowanie przycisku */
-    width: 200px;            /* Opcjonalnie: ustawiamy szerokość */
+    display: block;
+    margin: 20px auto;
+    width: 200px;
+    background-color: #388e3c;
+    color: white;
+    border-radius: 5px;
+    padding: 12px 0;
+    text-align: center;
 }
 
-/* Animacja przejścia */
+#back-to-home:hover {
+    background-color: #1b5e20;
+}
+
 .fade {
     transition: opacity 0.3s ease;
 }
@@ -141,3 +207,6 @@ li button:hover {
     opacity: 1;
 }
 
+button:active {
+    transform: translateY(2px);
+}
